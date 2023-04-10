@@ -67,9 +67,9 @@ go(function () {
         ]
     ];
     try {
-        $ocr = \AIP\BaiduAIP\Factory::ocr($config);
+        $ocr = \Jiahetian\HyperfBaidu\Factory::ocr($config);
         // cache rebind ，默认：文件存储
-        $ocr->rebind(\AIP\BaiduAIP\Kernel\ServiceProviders::Cache, new \AIP\BaiduAIP\AccessTokenCache());
+        $ocr->rebind(\Jiahetian\HyperfBaidu\Kernel\ServiceProviders::Cache, new \Jiahetian\HyperfBaidu\AccessTokenCache());
         var_dump($ocr->ocr->businessCardUrl("https://xxxxx"));
     } catch (\Exception $e) {
         var_dump($e->getMessage(), $e->getCode());
@@ -95,14 +95,14 @@ $config = [
         'tempDir' => __DIR__, // access_token存放路径
     ],
     "request"       => [
-        "httpClientDriver" => \AIP\BaiduAIP\Kernel\HttpClient\CurlClientDriver::class,
+        "httpClientDriver" => \Jiahetian\HyperfBaidu\Kernel\HttpClient\CurlClientDriver::class,
         "timeout"          => 5 // 请求超时时间
     ]
 ];
 try {
-    $ocr = \AIP\BaiduAIP\Factory::ocr($config);
+    $ocr = \Jiahetian\HyperfBaidu\Factory::ocr($config);
     // cache rebind ，默认：文件存储
-    $ocr->rebind(\AIP\BaiduAIP\Kernel\ServiceProviders::Cache, new \AIP\BaiduAIP\AccessTokenCache());
+    $ocr->rebind(\Jiahetian\HyperfBaidu\Kernel\ServiceProviders::Cache, new \Jiahetian\HyperfBaidu\AccessTokenCache());
     var_dump($ocr->ocr->businessCardUrl("https://xxxxx"));
 } catch (\Exception $e) {
     var_dump($e->getMessage(), $e->getCode());
@@ -117,7 +117,7 @@ AccessTokenCache.php
 
 declare(strict_types=1);
 
-namespace AIP\BaiduAIP;
+namespace Jiahetian\HyperfBaidu;
 
 use Psr\SimpleCache\CacheInterface;
 
@@ -175,7 +175,7 @@ class AccessTokenCache implements CacheInterface
 ### 人脸
 ```php
 $config = [];
-$face = \AIP\BaiduAIP\Factory::face($config);
+$face = \Jiahetian\HyperfBaidu\Factory::face($config);
 //人脸检测
 $face->face->detect();
 //在线活体检测
@@ -193,7 +193,7 @@ $face->face->search();
 ### 组
 ```php
 $config = [];
-$face = \AIP\BaiduAIP\Factory::face($config);
+$face = \Jiahetian\HyperfBaidu\Factory::face($config);
 //添加
 $face->group->add();
 //删除
@@ -207,7 +207,7 @@ $face->group->users();
 ### 用户
 ```php
 $config = [];
-$face = \AIP\BaiduAIP\Factory::face($config);
+$face = \Jiahetian\HyperfBaidu\Factory::face($config);
 //添加
 $face->user->add();
 //更新
@@ -227,7 +227,7 @@ $face->user->faceDelete();
 ### 其他
 ```php
 $config = [];
-$face = \AIP\BaiduAIP\Factory::face($config);
+$face = \Jiahetian\HyperfBaidu\Factory::face($config);
 //身份验证接口
 $face->other->personVerify();
 //语音校验码接口
@@ -238,7 +238,7 @@ $face->other->videoSessionCode();
 
 ```php
 $config = [];
-$image = \AIP\BaiduAIP\Factory::image($config);
+$image = \Jiahetian\HyperfBaidu\Factory::image($config);
 //通用物体识别接口
 $image->classify->advancedGeneral();
 //菜品识别接口
@@ -255,7 +255,7 @@ $image->classify->vehicleDetect();
 
 ```php
 $config = [];
-$image = \AIP\BaiduAIP\Factory::image($config);
+$image = \Jiahetian\HyperfBaidu\Factory::image($config);
 //图像审核
 $image->censor->imageCensorUserDefined();
 //图像地址审核
@@ -274,7 +274,7 @@ $image->censor->videoCensorUserDefined();
 
 ```php
 $config = [];
-$ocr = \AIP\BaiduAIP\Factory::ocr($config);
+$ocr = \Jiahetian\HyperfBaidu\Factory::ocr($config);
 //通用文字识别接口
 $ocr->ocr->generalBasic();
 //通用文字识别（含位置高精度版）接口
@@ -289,7 +289,7 @@ $ocr->ocr->accurateBasic();
 
 ```php
 $config = [];
-$speech = \AIP\BaiduAIP\Factory::speech($config);
+$speech = \Jiahetian\HyperfBaidu\Factory::speech($config);
 //语音识别
 $speech->speech->asr();
 ```
@@ -298,7 +298,7 @@ $speech->speech->asr();
 
 ```php
 $config = [];
-$body = \AIP\BaiduAIP\Factory::body($config);
+$body = \Jiahetian\HyperfBaidu\Factory::body($config);
 //人体关键点识别接口
 $body->body->bodyAnalysis();
 //人体检测与属性识别接口
@@ -321,7 +321,7 @@ $body->body->handAnalysis();
 
 ```php
 $config = [];
-$kg = \AIP\BaiduAIP\Factory::kg($config);
+$kg = \Jiahetian\HyperfBaidu\Factory::kg($config);
 //创建任务接口
 $kg->kg->createTask();
 //更新任务接口
@@ -339,7 +339,7 @@ $kg->kg->getTaskStatus();
 ## process
 ```php
 $config = [];
-$image = \AIP\BaiduAIP\Factory::image($config);
+$image = \Jiahetian\HyperfBaidu\Factory::image($config);
 // 图像无损放大接口
 $image->process->imageQualityEnhance();
 // 图像去雾接口
