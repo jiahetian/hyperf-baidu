@@ -1,0 +1,36 @@
+{
+    "name": "jiahetian/hyperf-baidu",
+    "description": "a baidu open platform component for hyperf",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "version": "1.1.0",
+    "autoload": {
+        "psr-4": {
+            "Jiahetian\\HyperfDouyin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HyperfTest\\": "tests"
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "ext-swoole": ">=4.6",
+        "ext-json": "*",
+        "ext-libxml": "*",
+        "ext-simplexml": "*",
+        "ext-openssl": "*",
+        "psr/log": "^3.0",
+        "psr/http-message": "^1.0",
+        "psr/simple-cache": "^3.0",
+        "pimple/pimple": "^3.0",
+        "easyswoole/utility": "^1.1"
+    },
+    "require-dev": {},
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {}
+}
